@@ -1,6 +1,7 @@
 
 
-
+# This function determines the naive possible values of n_p for N
+# Using Sylow's 3rd theorem
 def np(N, p):
     F = list(factor(N))
     m = [x for x in F if x[0] == p][0][1]
@@ -11,6 +12,8 @@ def np(N, p):
     
     return nplist
 
+# This function outputs all the lists of possible values of np
+# for each prime dividing N
 def allnp(N):
     pf = prime_divisors(N)
     
@@ -31,7 +34,8 @@ def printallnp(N):
     
     return []
 
-
+# This is the simplest test:
+# See if one of the sets of n_p has cardinality 1
 def test1(N):
     nps = allnp(N)
     exists_normal = any([len(x) == 1 for x in nps])
@@ -43,7 +47,8 @@ def test1(N):
 #         printallnp(N)
     
 
-# The idea here is that if one of the max n_p's is small relative to the size of G, then the map G --> S_n might be forced to have nontrivial kernel   
+
+# The idea for this test is that if one of the max n_p's is small relative to the size of G, then the map G --> S_n might be forced to have nontrivial kernel   
 def test2(N):
     exists_normal = any([N > factorial(max(x)) for x in allnp(N)])
     
@@ -57,58 +62,25 @@ def test2(N):
     
     
 
-    
-    
-def test3verbose(N):
-    maybesimple = True
-    
-    F = list(factor(N))
-    simple_primes = [pair[0] for pair in F if pair[1] == 1]
-    #p = max(prime_divisors())
-    
-    # Assume all the n_p are not pinned down to 1 already
-    
-    # chunks = [min(np(N, p)[1:])*(p-1) for p in simple_primes]
-    
-    # run through prime divisors p of N
-    # consider a p-Sylow - it has p^m elements
-    # Gather all elements of q-Sylows for simple primes q different than p
-    for pair in list(factor(N)):
-        p = pair[0]
-        m = pair[1]
-        
-        chunks = [min(np(N, q)[1:])*(q-1) for q in simple_primes if q != p]
-        nonp = sum(chunks)
-        
-        print('For', p, ': non-p + p^m = ', nonp, '+', p^m, '=', nonp + p^m)
-        if nonp + p^m >= N:
-            maybesimple = False
-            print('Therefore not simple')
-    
-    return maybesimple    
-    
-    
-    
 def test3(N):
+    exists_normal = False
     
     if test1(N):
-        return True
+        exists_normal = True
+        return exists_normal
     
-    # Now we can be sure all np lists contain an element larger than 1
-    
-    exists_normal = False
+    # If we are here
+    # we can be sure all the n_p-lists contain an element larger than 1
        
     F = list(factor(N))
+    
+    # We want all the primes that divide N with multiplicity 1
     simple_primes = [pair[0] for pair in F if pair[1] == 1]
-    #p = max(prime_divisors())
-    
-    # Assume all the n_p are not pinned down to 1 already
-    
-    # chunks = [min(np(N, p)[1:])*(p-1) for p in simple_primes]
-    
-    # run through prime divisors p of N
+       
+    # We run through prime divisors p of N
     # consider a p-Sylow - it has p^m elements
     # Gather all elements of q-Sylows for simple primes q different than p
+    # See if the total is >= N. If so we win
     for pair in list(factor(N)):
         p = pair[0]
         m = pair[1]
@@ -119,11 +91,48 @@ def test3(N):
         if nonp + p^m >= N:
             exists_normal = True
 
-    return exists_normal
+    return exists_normal    
+    
+
+def test3verbose(N):
+    exists_normal = False
+    
+    if test1(N):
+        exists_normal = True
+        return exists_normal
+    
+    # If we are here
+    # we can be sure all the n_p-lists contain an element larger than 1
+       
+    F = list(factor(N))
+    
+    # We want all the primes that divide N with multiplicity 1
+    simple_primes = [pair[0] for pair in F if pair[1] == 1]
+       
+    # We run through prime divisors p of N
+    # consider a p-Sylow - it has p^m elements
+    # Gather all elements of q-Sylows for simple primes q different than p
+    # See if the total is >= N. If so we win
+    for pair in list(factor(N)):
+        p = pair[0]
+        m = pair[1]
+        
+        chunks = [min(np(N, q)[1:])*(q-1) for q in simple_primes if q != p]
+        nonp = sum(chunks)
+        
+        print('For', p, ': non-p + p^m = ', nonp, '+', p^m, '=', nonp + p^m)
+        if nonp + p^m >= N:
+            exists_normal = True
+            print('Therefore not simple')
+
+    return exists_normal      
+    
+    
+
   
     
     
-# The idea here is that if G is forced to have a homomorphism to A_n but N does not divide the order of A_n then we win   
+# The idea for this test is that if G is forced to have a homomorphism to A_n but N does not divide the order of A_n then we win   
 def test4(N):
     exists_normal = any([mod(factorial(max(x))/2, N) != 0 for x in allnp(N)])
     
