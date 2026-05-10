@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage[a4paper, margin=3cm]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{exer}[thm]{Exercise}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}%[section]
+\newtheorem{exmp}{Example}%[section]
+\newtheorem{rmrk}[thm]{Remark}
+\newtheorem{rem}[thm]{Remark}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\al}{\alpha}
+\newcommand{\la}{\lambda}
+\newcommand{\ns}{\vartriangleleft}
+
+\DeclareMathOperator{\Gal}{Gal}
+
+\begin{document}
+
+
+
+\section{O teorema $p^a q^b$ de Burnside}
+
+O teorema é o seguinte.
+\begin{thm}
+Seja $G$ um grupo de ordem $p^a q^b$ onde $p$ e $q$ são primos distintos. Então $G$ não é simples.
+\end{thm}
+
+\begin{proof}
+A nossa estratégia vai ser, a final das contas, achar uma representação irredutível não trivial $(V, \rho)$ de $G$, e um elemento $g \in G$ diferente da identidade que age em $V$ como múltiplo escalar de $I_V$. Segue-se que $\rho(g)$ está no centro de $\rho(G)$, e disso se segue ou que $Z(G) \neq \{e\}$ ou que $\rho$ não é fiel. Em ambos os casos $G$ possui um subgrupo normal não trivial.
+
+Seja $(V, \rho)$ uma representação irredutível de dimensão $n$, e seja $\chi$ o seu caracter. Consideramos o número complex $\zeta = \chi(g) / n$. Os autovalores de $\rho(g)$ são todos raízes de unidade e há $n$ deles em total. Portanto $|\zeta| \leq 1$, com igualdade se e somente se todos os autovalores de $\rho(g)$ coincidem, ou seja, se $\rho(g)$ é múltiplo escalar de $I_V$.
+
+Consideramos a norma $N(\zeta)$ de $\zeta$, no sentido da teoria algébrica de números agora. Se $K/\Q$ for uma extensão Galoisiana de corpos, e em geral $\al \in K$, a norma de $\al$ é por definição
+\[
+N(\al) = \prod_{a \in \Gal(K/\Q)} a(\al).
+\]
+A teoria de Galois garante que $N(\al) \in \Q$. Se $\al$ for integral sobre $\Z$ (i.e., se existe um polynomial mônico $m(x) \in \Z[x]$ tal que $m(\al) = 0$), então o mesmo vale para os conjugados $a(\al)$ e também para $N(\al)$. Em particular $N(\al) \in \Z$. Notamos que se $\al \neq 0$ então $N(\al) \neq 0$ também.
+
+Voltamos ao caso de $\zeta$. Por ser soma de raízes de unidade, o número $\zeta$ está contido em um corpo ciclotômico. Todo elemento $a$ do grupo de Galois permuta as raízes de unidade, e portanto $|a(\zeta)| \leq 1$ para todo tal $a$. Segue-se que $|N(\al)| \leq 1$, com igualdade se e somente se $\rho(g)$ é múltiplo escalar de $I_V$.
+
+Nossa tarefa, então, é de mostrar que $\zeta = \chi(g) / n$ é integral sobre $\Z$.
+
+Sejam $(V_i, \rho_i)$ as representações irredutíveis de $G$, onde $(V_1, \rho_1)$ é a representação trivial, e escreva $\chi_i$ para o caracter de $(V_i, \rho_i)$. Como $g \neq e$, temos a relação de ortogonalidade
+\begin{align*}
+0 = \sum_{i} \chi_i(e) \chi_i(g) = 1 + \sum_{i > 1} \dim(V_i) \chi_i(g)
+\end{align*}
+Seja $c > 1$ um inteiro. Notamos que o lado esquerdo de
+\begin{align*}
+-\frac{1}{c} = \sum_{i > 1} \frac{\dim(V_i)}{c} \chi_i(g)
+\end{align*}
+não é integral sobre $\Z$, enquanto os números $\chi_i(g)$ são todos integrais sobre $\Z$ (pois são somas de raízes de unidade). Somas de elementos integrais são integrais, e se segue que pelo menos um dos números $\dim(V_i)/c$ não é inteiro (e que $\chi_i(g) \neq 0$). Tomando $c$ um primo, isso quer dizer que há uma representação irredutível $(V, \rho)$ de dimensão $n = \dim(V)$ e com caracter $\chi$, tal que $\chi(g) \neq 0$ e $n$ coprimo a $c$.
+
+Agora seja $C(g) = \{h g h^{-1} \mid h \in G \}$ a classe de conjugação de $g$, e $u \in \Z G$ a função indicadora em $C(g)$. De um lado $u$ está no centro de $\Z G$, e como tal é um elemento de uma $\Z$-álgebra finitamente gerada, logo é integral sobre $\Z$. A sua imagem $\rho(u)$ é integral sobre $\Z$ também. No outro lado $\rho(u)$ comuta com $\rho(h)$ para todo $h \in G$ e portanto, pelo lema de Schur $\rho(u) = \la I_V$ por algum escalar $\la \in \C$. Temos $\#C(g) \chi(g) = \chi(u) = n \la$. Segue-se que
+\[
+\#C(g) \frac{\chi(g)}{n}
+\]
+é integral sobre $\Z$.
+
+Suponha que existisse $g \neq e$ tal que $\#C(g) = p^m$. Então escolhemos $(V, \rho)$ como acima, com $c = p$, sendo $n = \dim(V)$ coprimo a $p$ e $\chi(g) \neq 0$. Então $n$ é coprimo a $\#C(g)$ e portanto existem $x, y \in \Z$ tais que
+\[
+x n + y \#C(g) = 1
+\]
+Logo
+\begin{align*}
+\frac{\chi(g)}{n} = y \#C(g) \frac{\chi(g)}{n} + x \chi(g)
+\end{align*}
+também seria integral sobre $\Z$, o que seria nossa conclusão desejada.
+
+Então basta provar que $G$ contém um elemento $g$ tal que $\#C(g) = p^m$. É aqui que usaremos a hipótese sobre a ordem de $G$. Seja $g$ um elemento não trivial do centro $Z(S)$ de um $q$-Sylow $S < G$ (o centro de um $q$-grupo sempre é não trivial). O centralizador $C_G(g)$ contém $S$, portanto tem índice em $G$ um divisor de $\# G / \# S = p^a$. Mas a cardinalidade $\#C(g)$ é justamente esse índice, pelo teorema órbita-estabilizador. Assim termina a demonstração.
+
+\end{proof}
+
+\section{O teorema do complemento normal}
+
+Seja $G$ um grupo finito e $S < G$ um $p$-Sylow. Se $S$ satisfaz uma série de condições, este teorema de Burnside garante a  existência de um subgrupo normal $N \ns G$ tal que $N \cap S = \{e\}$ e $NS = G$. Em particular $G$ não pode ser simples. Além disso $G$ é apresentado como produto semidireto $G = N \ltimes S$.
+
+
+
+
+
+
+
+
+\bibliography{refs}{}
+\bibliographystyle{plain}
+
+
+\end{document}
