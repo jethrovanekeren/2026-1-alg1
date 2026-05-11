@@ -29,6 +29,7 @@
 \newcommand{\la}{\lambda}
 \newcommand{\ns}{\vartriangleleft}
 
+\DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Gal}{Gal}
 
 \begin{document}
@@ -91,7 +92,83 @@ Então basta provar que $G$ contém um elemento $g$ tal que $\#C(g) = p^m$. É a
 
 Seja $G$ um grupo finito e $S < G$ um $p$-Sylow. Se $S$ satisfaz uma série de condições, este teorema de Burnside garante a  existência de um subgrupo normal $N \ns G$ tal que $N \cap S = \{e\}$ e $NS = G$. Em particular $G$ não pode ser simples. Além disso $G$ é apresentado como produto semidireto $G = N \ltimes S$.
 
+A demonstração do teorema utiliza uma construção que se chama ``transferência'', que tem interesse independente. Seja $G$ um grupo e $H < G$ um subgrupo. Supomos que $H$ é abeliano e que o índice $n = [G : H]$ é finito. Sejam, então, $g_1, \ldots, g_n$ representantes das classes laterais em $G / H$, i.e., $G/H = {g_1H, \ldots, g_nH}$. Para $1 \leq i \leq n$, e um elemento qualquer $g \in G$, podemos considerar $gg_i$ que certamente está em algum classe lateral $g_{j} H$ e em particular da forma $g_j h_i$ por algum $h_i \in H$. De fato a associação $i \mapsto j$ determina uma permutação do conjunto $G / H$, e podemos definir $\sigma \in S_n$ por $\sigma(i) = j$ (isto nada mais é que o homomorfismo $G \rightarrow S_n$ induzido pela ação de $G$ no $G$-conjunto $G/H$).
 
+Neste momento, nosso interesse está nos elementos $h_1, \ldots, h_n$ associados a $g$. Definimos uma função $T : G \rightarrow H$ por
+\[
+T(g) = h_1 h_2 \cdots h_n.
+\]
+Surpreendentemente $T$ é bem-definido, independente da escolha de representantes $g_1, \ldots, g_n$ das classes laterais, e $T$ é um homomorfismo. Claramente $T$ pode ser escrito como
+\[
+T(g) = \prod_{i=1}^n g_{\sigma(i)}^{-1} g g_i.
+\]
+Se a permutação $\sigma$ consiste de cíclos de comprimentos $k_1, \ldots, k_m$ e, para cada $1 \leq j \leq n$, escolhemos ${i_j}$ no $j$-ésimo cíclo, então não é difícil verificar que
+\[
+T(g) = \prod_{j=1}^m g_{i_j}^{-1} g^{k_j} g_{i_j}.
+\]
+
+
+
+
+
+
+
+\begin{thm}\label{thm:normal.complement}
+Seja $P < G$ um $p$-Sylow de um grupo $G$ de ordem $p^m \cdot b$ onde $b$ é coprimo a $p$. Se $P < Z(N_G(P))$ então a restrição da transferência $T : G \rightarrow P$ toma a forma $x \mapsto x^b$. Em particular $T : G \rightarrow P$ é sobrejetor, e seu núcleo é um subgrupo normal de $G$ complementar a $P$.
+\end{thm}
+
+Notamos que $P < Z(N_G(P))$ implica, em particular, que $P$ é abeliano. O homomorfismo $T : G \rightarrow P$ faz sentido, portanto.
+
+\begin{proof}
+Sejam $g_1, \ldots, g_b$ um conjunto de representantes das classes laterais de $G / P$. Consideramos a transferência $T : G \rightarrow P$ dada por
+\begin{align*}
+T(g) &= \prod_{i=1}^b g_{\sigma(i)}^{-1} g g_i \\
+%
+&= \prod_{j=1}^m g_{i_j}^{-1} g^{k_j} g_{i_j}.
+\end{align*}
+Agora seja $g \in P$, e note que cada fator $g_{i_j}^{-1} g^{k_j} g_{i_j}$ é conjugado a $g^{k_j}$ via o elemento $g_{i_j} \in G$. Como $g^{k_j}$ e $g_{i_j}^{-1} g^{k_j} g_{i_j}$ são dois elementos de $P = Z(P)$, e são conjugados via elemento de $G$, são conjugados via elemento $c_j \in N_G(P)$ por Lema \ref{lem:special.conj} abaixo.
+
+Para nosso $g \in P$ temos, portanto
+\begin{align*}
+T(g) = \prod_{j=1}^m c_{j}^{-1} g^{k_j} c_{j}.
+\end{align*}
+Mas como $c_j \in N_G(P)$ e $g \in P < Z(N_G(P))$, estes elementos comutam e obtemos
+\[
+T(g) = \prod_{j=1}^m g^{k_j} = g^b.
+\]
+O homomorfismo $x \mapsto x^b$ é sobrejetor pois $b$ é coprimo à ordem de $P$, logo $T : G \rightarrow P$ é sobrejetor.
+\end{proof}
+
+
+\begin{lemma}\label{lem:special.conj}
+Seja $P < G$ um $p$-Sylow do grupo $G$. Sejam $g, h \in Z(P)$ dois elementos que são conjugados via um elemento de $G$. Então são conjugados, de fato, via um elemento de $N_G(P)$.
+\end{lemma}
+
+\begin{proof}
+Seja $g = aha^{-1}$ onde $a \in G$. Considerando que $g, h \in Z(P)$ significa que $P < Z_G(g)$ e $P < Z_G(h)$, e que $aPa^{-1} < Z_G(aha^{-1}) = Z_G(g)$ também, observamos que $P$ e $aPa^{-1}$ são dois $p$-Sylows em $Z_G(g)$. Pelos teoremas de Sylow, temos que $P$ e $aPa^{-1}$ são conjugados via um elemento de $Z_G(g)$. Ou seja, existe $b \in Z_G(g)$ tal que
+\[
+b(aPa^{-1})b^{-1} = P.
+\]
+Por definição, então $ba \in N_G(P)$. Finalmente temos
+\[
+(ba) h (ba)^{-1} = b a h a^{-1} b^{-1} = b g b^{-1} = g,
+\]
+onde no último passo usamos $b \in Z_G(g)$.
+\end{proof}
+
+
+
+
+
+\begin{cor}
+Seja $N = p \cdot b$ onde todos os divisores primos de $b$ são maiores que $p$. Um grupo de ordem $N$ não é simples.
+\end{cor}
+
+\begin{proof}
+Seja $G$ um grupo de ordem $N$, e seja $P < G$ um $p$-Sylow. Per ser de ordem $p$ temos $P \cong \Z/p$ e em particular $P$ é abeliano. Seja $N = N_G(P)$ e $Z = C_G(P)$. Como sempre, há um homomorfismo injetor $N / Z \rightarrow \Aut(P)$, o que neste caso é isomorfa a $\Z / (p-1)$, mas nenhum fator de $p-1$ divide a ordem de $N < G$, o que obriga $N = Z$.
+
+Um subgrupo $H < G$ está contido no centro do seu centralizador $Z_G(H)$. Como $N_G(P) = Z_G(P)$ no presente caso, obtemos $P < Z(Z_G(P)) = Z(N_G(P))$. Podemos aplicar o Teorema \ref{thm:normal.complement} para deduzir a existência de um complemento normal a $P$.
+\end{proof}
 
 
 
