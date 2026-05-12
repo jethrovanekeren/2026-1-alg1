@@ -43,6 +43,8 @@ O teorema é o seguinte.
 Seja $G$ um grupo de ordem $p^a q^b$ onde $p$ e $q$ são primos distintos. Então $G$ não é simples.
 \end{thm}
 
+Achei a seguinte demonstração na Wikipedia. A referência original é {\cite[\S 240, Corollary III]{Burnside1911}}. Apesar da terminologia às vezes arcáica, a ideia da demonstração original de Burnside é bastante similar à moderna.
+
 \begin{proof}
 A nossa estratégia vai ser, a final das contas, achar uma representação irredutível não trivial $(V, \rho)$ de $G$, e um elemento $g \in G$ diferente da identidade que age em $V$ como múltiplo escalar de $I_V$. Segue-se que $\rho(g)$ está no centro de $\rho(G)$, e disso se segue ou que $Z(G) \neq \{e\}$ ou que $\rho$ não é fiel. Em ambos os casos $G$ possui um subgrupo normal não trivial.
 
@@ -90,6 +92,8 @@ Então basta provar que $G$ contém um elemento $g$ tal que $\#C(g) = p^m$. É a
 
 \section{O teorema do complemento normal}
 
+
+
 Seja $G$ um grupo finito e $S < G$ um $p$-Sylow. Se $S$ satisfaz uma série de condições, este teorema de Burnside garante a  existência de um subgrupo normal $N \ns G$ tal que $N \cap S = \{e\}$ e $NS = G$. Em particular $G$ não pode ser simples. Além disso $G$ é apresentado como produto semidireto $G = N \ltimes S$.
 
 A demonstração do teorema utiliza uma construção que se chama ``transferência'', que tem interesse independente. Seja $G$ um grupo e $H < G$ um subgrupo. Supomos que $H$ é abeliano e que o índice $n = [G : H]$ é finito. Sejam, então, $g_1, \ldots, g_n$ representantes das classes laterais em $G / H$, i.e., $G/H = {g_1H, \ldots, g_nH}$. Para $1 \leq i \leq n$, e um elemento qualquer $g \in G$, podemos considerar $gg_i$ que certamente está em algum classe lateral $g_{j} H$ e em particular da forma $g_j h_i$ por algum $h_i \in H$. De fato a associação $i \mapsto j$ determina uma permutação do conjunto $G / H$, e podemos definir $\sigma \in S_n$ por $\sigma(i) = j$ (isto nada mais é que o homomorfismo $G \rightarrow S_n$ induzido pela ação de $G$ no $G$-conjunto $G/H$).
@@ -113,9 +117,9 @@ T(g) = \prod_{j=1}^m g_{i_j}^{-1} g^{k_j} g_{i_j}.
 
 
 
-\begin{thm}\label{thm:normal.complement}
-Seja $P < G$ um $p$-Sylow de um grupo $G$ de ordem $p^m \cdot b$ onde $b$ é coprimo a $p$. Se $P < Z(N_G(P))$ então a restrição da transferência $T : G \rightarrow P$ toma a forma $x \mapsto x^b$. Em particular $T : G \rightarrow P$ é sobrejetor, e seu núcleo é um subgrupo normal de $G$ complementar a $P$.
-\end{thm}
+\begin{prop}\label{prop:surjective transfer}
+Seja $P < G$ um $p$-Sylow de um grupo $G$ de ordem $p^m \cdot b$ onde $b$ é coprimo a $p$. Se $P < Z(N_G(P))$ então a restrição da transferência $T : G \rightarrow P$ toma a forma $x \mapsto x^b$.
+\end{prop}
 
 Notamos que $P < Z(N_G(P))$ implica, em particular, que $P$ é abeliano. O homomorfismo $T : G \rightarrow P$ faz sentido, portanto.
 
@@ -157,17 +161,55 @@ onde no último passo usamos $b \in Z_G(g)$.
 \end{proof}
 
 
+Como corlário quase imediato da Proposição \ref{prop:surjective transfer}, obtemos
+\begin{thm}\label{thm:normal.complement}
+Seja $P < G$ um $p$-Sylow de um grupo $G$ de ordem $p^m \cdot b$ onde $b$ é coprimo a $p$. Se $P < Z(N_G(P))$ então a $G$ contém um subgrupo normal de ordem $b$.
+\end{thm}
 
-
-
-\begin{cor}
-Seja $N = p \cdot b$ onde todos os divisores primos de $b$ são maiores que $p$. Um grupo de ordem $N$ não é simples.
-\end{cor}
+Este teorema aparece como {\cite[\S 243, Theorem II]{Burnside1911}}. A demonstração lá parece usar técnicas diferentes (e não parece usar a transferência). No outro lado o Burnside é creditado como inventor do homomorfismo de transferência.
 
 \begin{proof}
-Seja $G$ um grupo de ordem $N$, e seja $P < G$ um $p$-Sylow. Per ser de ordem $p$ temos $P \cong \Z/p$ e em particular $P$ é abeliano. Seja $N = N_G(P)$ e $Z = C_G(P)$. Como sempre, há um homomorfismo injetor $N / Z \rightarrow \Aut(P)$, o que neste caso é isomorfa a $\Z / (p-1)$, mas nenhum fator de $p-1$ divide a ordem de $N < G$, o que obriga $N = Z$.
+A transferência $T : G \rightarrow P$ é sobrejetor, e seu núcleo é um subgrupo normal de $G$ de ordem $\# G / \# P = b$.
+\end{proof}
+
+
+
+\section{Aplicações}
+
+
+\begin{prop}\label{prop:smallest.prime.simple}
+Seja $N = p \cdot b$ onde todos os divisores primos de $b$ são maiores que $p$. Um grupo de ordem $N$ não é simples.
+\end{prop}
+
+\begin{proof}
+Seja $G$ um grupo de ordem $N$, e seja $P < G$ um $p$-Sylow. Por ser de ordem $p$ temos $P \cong \Z/p$ e em particular $P$ é abeliano. Seja $N = N_G(P)$ e $Z = C_G(P)$. Há um homomorfismo injetor $N / Z \rightarrow \Aut(P)$, e neste caso $\Aut(P)$ tem ordem $p-1$, mas nenhum primo menor que $p$ divide a ordem de $G$, nem portanto de $N$, nem portanto de $N/Z$. Segue-se que $N = Z$.
 
 Um subgrupo $H < G$ está contido no centro do seu centralizador $Z_G(H)$. Como $N_G(P) = Z_G(P)$ no presente caso, obtemos $P < Z(Z_G(P)) = Z(N_G(P))$. Podemos aplicar o Teorema \ref{thm:normal.complement} para deduzir a existência de um complemento normal a $P$.
+\end{proof}
+
+
+\begin{prop}
+Sejam $p$, $q$ e $r$ primos distintos. Um grupo de ordem $N = p^2 q r$ não é simples, exceto se $N = 2^2 \cdot 3 \cdot 5$.
+\end{prop}
+
+\begin{proof}
+Podemos supor que $p < q, r$ pois, caso contrário, teríamos a conclusão desejada pela Proposição \ref{prop:smallest.prime.simple}.
+
+Seja $G$ um grupo de ordem $N$, e seja $P < G$ um $p$-Sylow. Por ser de ordem $p^2$ temos $P$ abeliano (e isomorfa ou a $\Z/p^2$ ou a $\Z/p \times \Z/p$). Temos $P < N_G(P)$ e, no caso de igualdade, teríamos $P < Z(N_G(P))$ e $G$ teria um subgrupo normal pelo Teorema \ref{thm:normal.complement}. Se $N_G(P) = G$ teríamos $P \ns G$ já. Então suponha que $N_G(P) \neq P, G$.
+
+A ordem de $N_G(P)$ tem que ser ou $p^2 q$ ou $p^2 r$. Suponha, sem perda de generalidade, que seja a primeira dessas possibilidades. Agora seja $Q < N_G(P)$ um $q$-Sylow\footnote{Note que estamos escolhendo um $q$-Sylow de $N_G(P)$, não de $G$ Evidentemente $Q$ vai ser um $q$-Sylow de $G$ também.}. Claramente $P \cap Q = \{e\}$ e, como $P \ns N_G(P)$ e $Q < N_G(P)$, temos $N_G(P) = P \rtimes Q$. Pela estrutura de produtos semidiretos, temos $N_G(P) = P \rtimes_\sigma Q$ por algum homomorfismo $\sigma : Q \rightarrow \Aut(P)$.
+
+Se $\sigma$ é trivial e $N_G(P) = P \times Q$ então $N_G(P)$ seria abeliano, portanto $P < Z(N_G(P))$ e $G$ teria um subgrupo normal pelo Teorema \ref{thm:normal.complement}. Vamos provar que $\sigma$ é trivial por análise das ordens de $Q$ e de $\Aut(P)$.
+
+A ordem de $Q$ e $q$ e para a ordem de $\Aut(P)$ temos dois casos:
+\begin{enumerate}
+\item se $P \cong \Z/p^2$ então $\# \Aut(P) = p(p-1)$,
+
+\item se $P \cong \Z/p \times \Z/p$ então $\# \Aut(P) = p(p^2-1) = p(p-1)(p+1)$.
+\end{enumerate}
+Lembramos que $q > p$. No primeiro caso $q$ não divide $\# \Aut(P)$, logo $\sigma$ é trivial. No segundo caso, $q$ só divide $\# \Aut(P)$ se $q = p+1$ e caso contrário $\sigma$ é trivial.
+
+Mas para primos $p$ e $q$ só temos $q = p+1$ se $p=2$ e $q=3$. Agora seja $N = 2^2 \cdot 3 \cdot r$ onde $r \geq 5$ é primo. O número $n_r$ de $r$-Sylows divide $2^2 \cdot 3 = 12$ e satisfaz $n_r \cong 1 \bmod r$. A única possibilidade é $r = 5$ e portanto $N = 60$.
 \end{proof}
 
 
