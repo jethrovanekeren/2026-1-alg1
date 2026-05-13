@@ -213,7 +213,30 @@ Mas para primos $p$ e $q$ só temos $q = p+1$ se $p=2$ e $q=3$. Agora seja $N = 
 \end{proof}
 
 
+\begin{prop}
+Seja $N = \prod_i p_i^{\al_i}$ a fatoração em primos da ordem $N$ de um grupo $G$. Se $G$ é simples então ou
+\begin{enumerate}
+\item $\al_i \geq 3$ por algum $i$, ou
 
+\item $12$ divide $N$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Sejam $p_1 < p_2 < \ldots < p_k$ sem perda de generalidade, e escreva $p = p_1$. Se $\al_1 = 1$ teríamos a conclusão desejada pela Proposição \ref{prop:smallest.prime.simple}.
+
+Suponha que $\al_1 = 2$ agora, e seja $P < G$ um $p$-Sylow. Por ser de ordem $p^2$ temos $P$ abeliano (e isomorfa ou a $\Z/p^2$ ou a $\Z/p \times \Z/p$). Temos $P < N_G(P)$ e, no caso de igualdade, teríamos $P < Z(N_G(P))$ e $G$ teria um subgrupo normal pelo Teorema \ref{thm:normal.complement}. Então suponha que $N_G(P) \neq P$. Seja $q \neq p$ algum primo que divide $\# N_G(P)$, e seja $Q < N_G(P)$ um $q$-Sylow. Como $P \ns N_G(P)$ e $Q < N_G(P)$ temos o subgrupo $PQ < N_G(P)$ e temos $PQ = P \rtimes Q$.
+
+Pela estrutura de produtos semidiretos, temos $N_G(P) = P \rtimes_\sigma Q$ por algum homomorfismo $\sigma : Q \rightarrow \Aut(P)$. Se $\sigma$ é trivial então $PQ = P \times Q$ e deduzimos que $Q < Z_G(P)$. Por hipótese a ordem de $Q$ é $q$ ou $q^2$, e para a ordem de $\Aut(P)$ temos dois casos:
+\begin{enumerate}
+\item se $P \cong \Z/p^2$ então $\# \Aut(P) = p(p-1)$,
+
+\item se $P \cong \Z/p \times \Z/p$ então $\# \Aut(P) = p(p^2-1) = p(p-1)(p+1)$.
+\end{enumerate}
+Lembramos que $q > p$. No primeiro caso $q$ não divide $\# \Aut(P)$, logo $\sigma$ é trivial. No segundo caso, $q$ só divide $\# \Aut(P)$ se $q = p+1$ e caso contrário $\sigma$ é trivial. Se $q = p+1$ então temos $p=2$ e $q=3$ e $N$ é divisível por $2^2 \cdot 3 = 12$. Caso contrário $Q < C_G(P)$.
+
+Para todo $q$-Sylow $Q$ em $N_G(P)$, os elementos de $Q$ comutam com os elementos de $P$. O subgrupo $H$ de $N_G(P)$ gerado por todos estes $Q$ claramente tem ordem $\#N_G(P) / \#P$ e $H < C_G(P)$. Portanto temos $N_G(P) = P \times H$ e $P < Z(N_G(P))$. Segue do Teorema \ref{thm:normal.complement} que $G$ contém um subgrupo normal.
+\end{proof}
 
 
 
