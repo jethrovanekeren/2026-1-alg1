@@ -188,7 +188,7 @@ Um subgrupo $H < G$ está contido no centro do seu centralizador $Z_G(H)$. Como 
 \end{proof}
 
 
-\begin{prop}
+\begin{prop}\label{prop:p2qr}
 Sejam $p$, $q$ e $r$ primos distintos. Um grupo de ordem $N = p^2 q r$ não é simples, exceto se $N = 2^2 \cdot 3 \cdot 5$.
 \end{prop}
 
@@ -214,16 +214,16 @@ Mas para primos $p$ e $q$ só temos $q = p+1$ se $p=2$ e $q=3$. Agora seja $N = 
 
 
 \begin{prop}
-Seja $N = \prod_i p_i^{\al_i}$ a fatoração em primos da ordem $N$ de um grupo $G$. Se $G$ é simples então ou
+Seja $N = \prod_i p_i^{\al_i}$ a fatoração em primos da ordem $N$ de um grupo $G$, onde $p_i < p_j$ sempre que $i < j$. Se $G$ é simples então ou
 \begin{enumerate}
-\item $\al_i \geq 3$ por algum $i$, ou
+\item $\al_1 \geq 3$, ou
 
 \item $12$ divide $N$.
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Sejam $p_1 < p_2 < \ldots < p_k$ sem perda de generalidade, e escreva $p = p_1$. Se $\al_1 = 1$ teríamos a conclusão desejada pela Proposição \ref{prop:smallest.prime.simple}.
+Escreva $p = p_1$ para conveniência. Se $\al_1 = 1$ teríamos a conclusão desejada pela Proposição \ref{prop:smallest.prime.simple}.
 
 Suponha que $\al_1 = 2$ agora, e seja $P < G$ um $p$-Sylow. Por ser de ordem $p^2$ temos $P$ abeliano (e isomorfa ou a $\Z/p^2$ ou a $\Z/p \times \Z/p$). Temos $P < N_G(P)$ e, no caso de igualdade, teríamos $P < Z(N_G(P))$ e $G$ teria um subgrupo normal pelo Teorema \ref{thm:normal.complement}. Então suponha que $N_G(P) \neq P$. Seja $q \neq p$ algum primo que divide $\# N_G(P)$, e seja $Q < N_G(P)$ um $q$-Sylow. Como $P \ns N_G(P)$ e $Q < N_G(P)$ temos o subgrupo $PQ < N_G(P)$ e temos $PQ = P \rtimes Q$.
 
@@ -237,6 +237,13 @@ Lembramos que $q > p$. No primeiro caso $q$ não divide $\# \Aut(P)$, logo $\sig
 
 Para todo $q$-Sylow $Q$ em $N_G(P)$, os elementos de $Q$ comutam com os elementos de $P$. O subgrupo $H$ de $N_G(P)$ gerado por todos estes $Q$ claramente tem ordem $\#N_G(P) / \#P$ e $H < C_G(P)$. Portanto temos $N_G(P) = P \times H$ e $P < Z(N_G(P))$. Segue do Teorema \ref{thm:normal.complement} que $G$ contém um subgrupo normal.
 \end{proof}
+
+
+Um passo chave na demonstração de Proposição \ref{prop:p2qr} foi a constatação de que a ordem de $\Aut(\Z/p^2)$, que é $p(p-1)$, não é divisível por nenhum primo $q > p$. Sendo que $\# \Aut(\Z/p^n) = p^{n-1}(p-1)$, conseguimos provar
+\begin{prop}
+Seja $p$ o menor primo que divide a ordem de um grupo $G$, e $P < G$ um $p$-Sylow. Se $P$ é cíclico de qualquer ordem, então $G$ não é simples.
+\end{prop}
+
 
 
 
