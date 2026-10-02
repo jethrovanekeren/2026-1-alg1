@@ -199,19 +199,19 @@ Podemos supor que $p < q, r$ pois, caso contrário, teríamos a conclusão desej
 
 Seja $G$ um grupo de ordem $N$, e seja $P < G$ um $p$-Sylow. Por ser de ordem $p^2$ temos $P$ abeliano (e isomorfa ou a $\Z/p^2$ ou a $\Z/p \times \Z/p$). Temos $P < N_G(P)$ e, no caso de igualdade, teríamos $P < Z(N_G(P))$ e $G$ teria um subgrupo normal pelo Teorema \ref{thm:normal.complement}. Se $N_G(P) = G$ teríamos $P \ns G$ já. Então suponha que $N_G(P) \neq P, G$.
 
-A ordem de $N_G(P)$ tem que ser ou $p^2 q$ ou $p^2 r$. Suponha, sem perda de generalidade, que seja a primeira dessas possibilidades. Agora seja $Q < N_G(P)$ um $q$-Sylow\footnote{Note que estamos escolhendo um $q$-Sylow de $N_G(P)$, não de $G$ Evidentemente $Q$ vai ser um $q$-Sylow de $G$ também.}. Claramente $P \cap Q = \{e\}$ e, como $P \ns N_G(P)$ e $Q < N_G(P)$, temos $N_G(P) = P \rtimes Q$. Pela estrutura de produtos semidiretos, temos $N_G(P) = P \rtimes_\sigma Q$ por algum homomorfismo $\sigma : Q \rightarrow \Aut(P)$.
+A ordem de $N_G(P)$ tem que ser ou $p^2 q$ ou $p^2 r$. Suponha, sem perda de generalidade, que seja a primeira dessas possibilidades. Agora seja $Q < N_G(P)$ um $q$-Sylow\footnote{Note que estamos escolhendo um $q$-Sylow de $N_G(P)$, não de $G$. Evidentemente $Q$ vai ser um $q$-Sylow de $G$ também.}. Claramente $P \cap Q = \{e\}$ e, como $P \ns N_G(P)$ e $Q < N_G(P)$, temos $N_G(P) = P \rtimes Q$. Pela estrutura de produtos semidiretos, temos $N_G(P) = P \rtimes_\sigma Q$ por algum homomorfismo $\sigma : Q \rightarrow \Aut(P)$.
 
 Se $\sigma$ é trivial e $N_G(P) = P \times Q$ então $N_G(P)$ seria abeliano, portanto $P < Z(N_G(P))$ e $G$ teria um subgrupo normal pelo Teorema \ref{thm:normal.complement}. Vamos provar que $\sigma$ é trivial por análise das ordens de $Q$ e de $\Aut(P)$.
 
-A ordem de $Q$ e $q$ e para a ordem de $\Aut(P)$ temos dois casos:
+A ordem de $Q$ é $q$. Para a ordem de $\Aut(P)$ temos dois casos:
 \begin{enumerate}
 \item se $P \cong \Z/p^2$ então $\# \Aut(P) = p(p-1)$,
 
-\item se $P \cong \Z/p \times \Z/p$ então $\# \Aut(P) = p(p^2-1) = p(p-1)(p+1)$.
+\item se $P \cong \Z/p \times \Z/p$ então $\# \Aut(P) = (p^2-p)(p^2-1) = p(p-1)^2(p+1)$.
 \end{enumerate}
 Lembramos que $q > p$. No primeiro caso $q$ não divide $\# \Aut(P)$, logo $\sigma$ é trivial. No segundo caso, $q$ só divide $\# \Aut(P)$ se $q = p+1$ e caso contrário $\sigma$ é trivial.
 
-Mas para primos $p$ e $q$ só temos $q = p+1$ se $p=2$ e $q=3$. Agora seja $N = 2^2 \cdot 3 \cdot r$ onde $r \geq 5$ é primo. O número $n_r$ de $r$-Sylows divide $2^2 \cdot 3 = 12$ e satisfaz $n_r \cong 1 \bmod r$. A única possibilidade é $r = 5$ e portanto $N = 60$.
+Mas para primos $p$ e $q$ só temos $q = p+1$ se $p=2$ e $q=3$. Agora seja $N = 2^2 \cdot 3 \cdot r$ onde $r \geq 5$ é primo. O número $n_r$ de $r$-Sylows divide $2^2 \cdot 3 = 12$ e satisfaz $n_r \equiv 1 \bmod r$. A única possibilidade é $r = 5$ e portanto $N = 60$.
 \end{proof}
 
 
