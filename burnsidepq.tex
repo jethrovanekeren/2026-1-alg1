@@ -96,6 +96,8 @@ Então basta provar que $G$ contém um elemento $g$ tal que $\#C(g) = p^m$. É a
 
 Seja $G$ um grupo finito e $S < G$ um $p$-Sylow. Se $S$ satisfaz uma série de condições, este teorema de Burnside garante a  existência de um subgrupo normal $N \ns G$ tal que $N \cap S = \{e\}$ e $NS = G$. Em particular $G$ não pode ser simples. Além disso $G$ é apresentado como produto semidireto $G = N \ltimes S$.
 
+Utilizei {\cite[Chapter 7]{Rotman2012}} como referência para o seguinte material (veja especialmente, {\cite[Theorem 7.50]{Rotman2012}}). Parece que {\cite[Chapter 5]{Isaacs2008}} é bom também.
+
 A demonstração do teorema utiliza uma construção que se chama ``transferência'', que tem interesse independente. Seja $G$ um grupo e $H < G$ um subgrupo. Supomos que $H$ é abeliano e que o índice $n = [G : H]$ é finito. Sejam, então, $g_1, \ldots, g_n$ representantes das classes laterais em $G / H$, i.e., $G/H = {g_1H, \ldots, g_nH}$. Para $1 \leq i \leq n$, e um elemento qualquer $g \in G$, podemos considerar $gg_i$ que certamente está em algum classe lateral $g_{j} H$ e em particular da forma $g_j h_i$ por algum $h_i \in H$. De fato a associação $i \mapsto j$ determina uma permutação do conjunto $G / H$, e podemos definir $\sigma \in S_n$ por $\sigma(i) = j$ (isto nada mais é que o homomorfismo $G \rightarrow S_n$ induzido pela ação de $G$ no $G$-conjunto $G/H$).
 
 Neste momento, nosso interesse está nos elementos $h_1, \ldots, h_n$ associados a $g$. Definimos uma função $T : G \rightarrow H$ por
@@ -188,7 +190,7 @@ Um subgrupo $H < G$ está contido no centro do seu centralizador $Z_G(H)$. Como 
 \end{proof}
 
 
-\begin{prop}
+\begin{prop}\label{prop:p2qr}
 Sejam $p$, $q$ e $r$ primos distintos. Um grupo de ordem $N = p^2 q r$ não é simples, exceto se $N = 2^2 \cdot 3 \cdot 5$.
 \end{prop}
 
@@ -214,16 +216,16 @@ Mas para primos $p$ e $q$ só temos $q = p+1$ se $p=2$ e $q=3$. Agora seja $N = 
 
 
 \begin{prop}
-Seja $N = \prod_i p_i^{\al_i}$ a fatoração em primos da ordem $N$ de um grupo $G$. Se $G$ é simples então ou
+Seja $N = \prod_i p_i^{\al_i}$ a fatoração em primos da ordem $N$ de um grupo $G$, onde $p_i < p_j$ sempre que $i < j$. Se $G$ é simples então ou
 \begin{enumerate}
-\item $\al_i \geq 3$ por algum $i$, ou
+\item $\al_1 \geq 3$, ou
 
 \item $12$ divide $N$.
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Sejam $p_1 < p_2 < \ldots < p_k$ sem perda de generalidade, e escreva $p = p_1$. Se $\al_1 = 1$ teríamos a conclusão desejada pela Proposição \ref{prop:smallest.prime.simple}.
+Escreva $p = p_1$ para conveniência. Se $\al_1 = 1$ teríamos a conclusão desejada pela Proposição \ref{prop:smallest.prime.simple}.
 
 Suponha que $\al_1 = 2$ agora, e seja $P < G$ um $p$-Sylow. Por ser de ordem $p^2$ temos $P$ abeliano (e isomorfa ou a $\Z/p^2$ ou a $\Z/p \times \Z/p$). Temos $P < N_G(P)$ e, no caso de igualdade, teríamos $P < Z(N_G(P))$ e $G$ teria um subgrupo normal pelo Teorema \ref{thm:normal.complement}. Então suponha que $N_G(P) \neq P$. Seja $q \neq p$ algum primo que divide $\# N_G(P)$, e seja $Q < N_G(P)$ um $q$-Sylow. Como $P \ns N_G(P)$ e $Q < N_G(P)$ temos o subgrupo $PQ < N_G(P)$ e temos $PQ = P \rtimes Q$.
 
@@ -237,6 +239,13 @@ Lembramos que $q > p$. No primeiro caso $q$ não divide $\# \Aut(P)$, logo $\sig
 
 Para todo $q$-Sylow $Q$ em $N_G(P)$, os elementos de $Q$ comutam com os elementos de $P$. O subgrupo $H$ de $N_G(P)$ gerado por todos estes $Q$ claramente tem ordem $\#N_G(P) / \#P$ e $H < C_G(P)$. Portanto temos $N_G(P) = P \times H$ e $P < Z(N_G(P))$. Segue do Teorema \ref{thm:normal.complement} que $G$ contém um subgrupo normal.
 \end{proof}
+
+
+Um passo chave na demonstração de Proposição \ref{prop:p2qr} foi a constatação de que a ordem de $\Aut(\Z/p^2)$, que é $p(p-1)$, não é divisível por nenhum primo $q > p$. Sendo que $\# \Aut(\Z/p^n) = p^{n-1}(p-1)$, conseguimos provar
+\begin{prop}
+Seja $p$ o menor primo que divide a ordem de um grupo $G$, e $P < G$ um $p$-Sylow. Se $P$ é cíclico de qualquer ordem, então $G$ não é simples.
+\end{prop}
+
 
 
 
