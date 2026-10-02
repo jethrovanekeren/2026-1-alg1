@@ -259,7 +259,16 @@ def test5(N):
 #    if not(test3(N)):
 #        printallnp(N)    
     
-    
+
+
+
+# 
+def test6(N):
+    return 'Not written yet'
+
+
+
+
     
 print('\n\n\n')
 print('Using test2, then tes3: the clash of numbers of elements of different orders')
@@ -487,12 +496,12 @@ def MechanicalSylow(N, verbose):
 
 # verbose = True means list all order
 # verbose = False means skip cases N = p^m, pq, p^2q, p^2q^2, pqr
-def SylowList(Nmax, verbose):
+def SylowList(Nmin, Nmax, verbose):
     # Option 'w' so we are overwriting any contents in 'output.tex'
     with open('output.tex', 'w') as f:
             print('\\documentclass{article}\n\\usepackage{amsmath,amssymb}\n\\usepackage{parskip}\n\\usepackage{color}\n\\usepackage[a4paper, margin=2.5cm]{geometry}\n\n\\begin{document}\n\n', file=f)
     
-    for N in range(1,Nmax):
+    for N in range(Nmin,Nmax):
         s = MechanicalSylow(N, verbose)
         with open('output.tex', 'a') as f:
             print(s, file=f)
